@@ -119,8 +119,8 @@ function undoBooksFromCompleted(videoId) {
   document.dispatchEvent(new Event(RENDER_VIDEOS));
 }
 
-function addVideoToComplete (videoId) {
-  const videoTarget = findBooks(videoId);
+function addVideoToComplete(videoId) {
+  const videoTarget = findVideos(videoId);
 
   if (videoTarget == null) return;
 
