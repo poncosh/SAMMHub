@@ -223,7 +223,13 @@ article.inactive {
     border: none;
     box-shadow: 0 1px 1px 1px rgb(57, 57, 57);
     cursor: pointer;
+    transition: 0.6s;
 }
+
+#playButton:hover {
+    font-size: 1.68rem;
+}
+
 .action {
     margin-top: 8px;
     display: flex;
