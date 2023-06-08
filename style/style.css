@@ -29,7 +29,8 @@ body > #embedded-video {
     color:white;
 }
 
-#play-thumbnail {
+#embedded-video > #play-thumbnail {
+    align-items: baseline;
     color: #ffffff;
     margin-top: 250px;
     position: fixed;
