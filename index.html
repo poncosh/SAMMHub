@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samm-Hub</title>
+    <link rel="icon" type="image/x-icon" href="./style/favicon.ico">
+    <link rel="stylesheet" href="./style/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    <main>
+        <div class="icon">
+            <img class="icon-pict" src="./style/Asset 2.png">
+            <h2 id="logo">SAMM<br>Hub</h2>
+        </div>
+        <div id="playlist-creator">
+            <section class="input-section">
+                <h2>Input Your Video</h2>
+                <form id="inputFilm">
+                    <div class="input">
+                    <label for="inputVideoTitle">Video Title</label>
+                    <input id="inputVideoTitle" placeholder="Input Video Title..." type="text" required>
+                    </div>
+                    <div class="input">
+                    <label for="inputVideoGenre">Genre</label>
+                    <select id="genre">
+                    <optgroup id="genreVideo">
+                        <option value="Humour">Humour</option>
+                        <option value="Music">Music</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Sci-fi">Sci-fi</option>
+                        <option value="Japanese">Japanese</option>
+                    </optgroup>
+                    </select>
+                    </div>
+                    <div class="input">
+                    <label for="inputVideoLink">Youtube Link</label>
+                    <input id="inputVideoLink" placeholder="Input Video Link..." type="text" required>
+                    </div>
+                    <div class="input_inline">
+                    <input id="inputVideoIsComplete" type="checkbox">
+                    <label for="inputVideoIsComplete">Already Watched</label>
+                    </div>
+                    <button id="videoSubmit" type="submit">Input the video to playlist</button>
+                </form>
+            </section>
+            <section class="search-section">
+                <h2>Find Your Video</h2>
+                <form id="searchVideo">
+                    <label for="searchVideoTitle">Title</label>
+                    <input id="searchVideoTitle" placeholder="Search..." type="text">
+                    <div class="radio-button">
+                        <input id="none-genre" class="radio-genre" name="genreInput" type="radio">
+                        None
+                        <input id="humour-genre" class="radio-genre" name="genreInput" type="radio" value="Humour">
+                        Humour
+                        <input id="music-genre" class="radio-genre" name="genreInput" type="radio" value="Music">
+                        Music
+                    </div>
+                    <div class="radio-button-2">
+                        <input id="drama-genre" class="radio-genre" name="genreInput" type="radio" value="Drama">
+                        Drama
+                        <input id="scifi-genre" class="radio-genre" name="genreInput" type="radio" value="Sci-fi">
+                        Sci-fi
+                        <input id="japanese-genre" class="radio-genre" name="genreInput" type="radio" value="Japanese">
+                        Japanese
+                    </div>
+                    <button id="searchSubmit" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </form>
+            </section>
+            <section class="video-list">
+                <h2>Not Yet Watched</h2>
+                <div class="radio-button-sort">
+                    <div>
+                        <input id="sort-button" name="sortInputUnwatched" type="radio" value="byTitle">
+                        Sort by Title
+                    </div>
+                    <div>
+                        <input id="sort-button" name="sortInputUnwatched" type="radio" value="byGenre">
+                        Sort by Genre
+                    </div>
+                </div>
+                <div id="unwatchedList" class="video-shelf">
+
+                </div>
+            </section>
+            <section class="video-list">
+                <h2>Already Watched</h2>
+                <div class="radio-button-sort">
+                    <div>
+                        <input id="sort-button" name="sortInputWatched" type="radio" value="byTitle">
+                        Sort by Title
+                    </div>
+                    <div>
+                        <input id="sort-button" name="sortInputWatched" type="radio" value="byGenre">
+                        Sort by Genre
+                    </div>
+                </div>
+                <div id="watchedList" class="video-shelf">
+
+                </div>
+            </section>
+        </div>
+    </main>
+    <section id="embedded-video">
+        <h2 class="vid-section">
+            Your Video Will Play Here!
+        </h2>
+        <img src="https://cdn.shopify.com/s/files/1/1061/1924/products/Heart_Eyes_Emoji_large.png" width="200px" height="200px" alt="emoji">
+    </section>
+    <script src="./script/view/main.js" type="module" text="text/javascript"></script>
+</body>
+</html>
