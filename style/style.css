@@ -34,8 +34,7 @@ body > #embedded-video {
     color: #ffffff;
     margin-top: 250px;
     position: fixed;
-    height: 200px;
-    width: 200px;
+    font-size: 200px;
 }
 
 #video-playing {
