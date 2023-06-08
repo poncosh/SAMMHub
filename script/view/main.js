@@ -22,7 +22,7 @@ function makeVideo(videoObject) {
         const embedVid = document.getElementById('embedded-video');
 
         embedVid.innerHTML = `
-            <iframe id="video-playing" src="${videoObject.link}" width="80%" height="740px" allow="autoplay" allowfullscreen>
+            <iframe id="video-playing" src="${videoObject.link}" width="80%" height="100%" allow="autoplay" allowfullscreen>
             </iframe>`
     })
 

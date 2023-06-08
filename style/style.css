@@ -8,7 +8,7 @@
 body {
     display: flex;
     flex-direction: row;
-    min-height: 1280px;
+    min-height: 1600px;
     font-family: 'Montserrat', sans-serif;
 }
 
