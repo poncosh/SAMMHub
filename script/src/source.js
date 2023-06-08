@@ -16,8 +16,6 @@ const videoList = [{
 }];
 
 const RENDER_VIDEOS = "render-sammhub";
-const SAVED_VIDEOS = "saved-vudeos";
-const STORAGE_KEY = "SAMMHUB";
 
 // untuk generate id berdasarkan tanggal sekarang
 function generateId() {
