@@ -29,14 +29,12 @@ body > #embedded-video {
     color:white;
 }
 
-#embedded-video > h2,
-#embedded-video > img {
+#play-thumbnail {
+    color: #ffffff;
     margin-top: 250px;
     position: fixed;
-}
-
-#embedded-video > img {
-    margin-top: 300px;
+    height: 200px;
+    width: 200px;
 }
 
 #video-playing {
