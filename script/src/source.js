@@ -43,7 +43,7 @@ function takeInputVideo() {
   let splittedLink = link.split('v=');
   let [ , channelCode ] = splittedLink;
   let codeVideo = channelCode.split('&');
-  let linkFix = `https://www.youtube.com/embed/${codeVideo}`
+  let linkFix = `https://www.youtube.com/embed/${codeVideo[0]}`
   let isComplete = document.getElementById("inputVideoIsComplete").checked;
 
   // check apakah ada kalimat di string
