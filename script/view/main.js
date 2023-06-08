@@ -1,4 +1,4 @@
-import { videoList, RENDER_VIDEOS, takeInputVideo, changeIsComplete, removeVideoItemWithId } from "../src/source.js";
+import { videoList, RENDER_VIDEOS, takeInputVideo, removeVideoFromCompleted, undoBooksFromCompleted, addVideoToComplete } from "../src/source.js";
 
 function makeVideo(videoObject) {
     const undo = 'Not Yet Watched';
@@ -47,10 +47,17 @@ function makeVideo(videoObject) {
         undoButton.classList.add('green');
         undoButton.innerHTML = undo;
 
+        undoButton.addEventListener('click', function() {
+            undoBooksFromCompleted(videoObject.id);
+        })
 
         const deleteButton = document.createElement('button');
         deleteButton.classList.add('red');
         deleteButton.innerHTML = deletes;
+
+        deleteButton.addEventListener('click', function() {
+            removeVideoFromCompleted(videoObject.id);
+        })
 
         actionDiv.append(undoButton, deleteButton)
         videoContainer.append(actionDiv);
@@ -62,12 +69,17 @@ function makeVideo(videoObject) {
         alreadyButton.classList.add('green');
         alreadyButton.innerHTML = alreadyWatched;
 
-        // alreadyButton.addEventListener('click', changeIsComplete(videoList, videoObject.id, videoObject.isComplete))
+        alreadyButton.addEventListener('click', function () {
+            addVideoToComplete(videoObject.id);
+        })
 
         const deleteButton = document.createElement('button');
         deleteButton.classList.add('red');
         deleteButton.innerHTML = deletes;
 
+        deleteButton.addEventListener('click', function() {
+            removeVideoFromCompleted(videoObject.id);
+        })
 
         actionDiv.append(alreadyButton, deleteButton)
         videoContainer.append(actionDiv);

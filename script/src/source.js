@@ -38,37 +38,34 @@ return {
 function takeInputVideo() {
   let title = document.getElementById("inputVideoTitle").value.trim();
   let titleClass = title.replace(/\s/g, "");
+  let link = document.getElementById("inputVideoLink").value;
   let genre = document.getElementById("genre").value;
-  let link = document.getElementById("inputVideoLink").value.trim();
-  let splittedLink = link.split('v=');
-  let [ , channelCode ] = splittedLink;
-  let codeVideo = channelCode.split('&');
-  let linkFix = `https://www.youtube.com/embed/${codeVideo[0]}`
   let isComplete = document.getElementById("inputVideoIsComplete").checked;
-
+  
   // check apakah ada kalimat di string
-  let check1 = /youtu.be/.test(link.toLowerCase());
-  let check2 = /youtube.com/.test(link.toLowerCase());
-
-  if (!check1 && !check2) {
+  if (!link.toUpperCase().includes('www.youtube.com/watch?v='.toUpperCase()) && !link.toUpperCase().includes('www.youtu.be/watch?v='.toLowerCase())) {
     alert("Masukan link yang benar");
   } else if (videoList.length > 10) {
     alert("Memori tidak cukup Harap hapus beberapa video agar bisa input lagi");
   } else {
+    let splittedLink = link.split('v=');
+    let [ , channelCode ] = splittedLink;
+    let codeVideo = channelCode.split('&');
+    let linkFix = `https://www.youtube.com/embed/${codeVideo[0]}`
   // objek sementara untuk menyimpan
-  let videoItem = generateSammhubObject(
-    generateId(),
-    title,
-    titleClass,
-    genre,
-    linkFix,
-    isComplete
-  );
+    let videoItem = generateSammhubObject(
+      generateId(),
+      title,
+      titleClass,
+      genre,
+      linkFix,
+      isComplete
+    );
 
-  videoList.push(videoItem)
-  }
+    videoList.push(videoItem)
+    }
 
-  document.dispatchEvent(new Event(RENDER_VIDEOS));
+    document.dispatchEvent(new Event(RENDER_VIDEOS));
 }
 /* contoh Output
 
@@ -86,15 +83,49 @@ isComplete: false,
 
 
 // Fungsi no.2 mengganti value isComplete pada database videoList
-function changeIsComplete(videoList, id, isComplete) {
-  let videoCopy = Array.from(videoList);
-  for (const videoItem of videoCopy) {
-    if (videoItem.id === id) {
-      videoItem.isComplete = isComplete;
-      break;
-    }
+function findVideoIndex(videoId) {
+  for (const index in videoList) {
+      if (videoList[index].id === videoId) {
+          return index;
+      }
   }
-  return videoCopy;
+  return -1;
+}
+
+function findVideos(videoId) {
+  for (const bookItem of videoList) {
+      if (bookItem.id === videoId) {
+          return bookItem;
+      }
+  }
+  return null;
+}
+
+function removeVideoFromCompleted(videoId) {
+  const videoTarget = findVideoIndex(videoId);
+
+  if (videoTarget === -1) return;
+
+  videoList.splice(videoTarget, 1);
+  document.dispatchEvent(new Event(RENDER_VIDEOS));
+}
+
+function undoBooksFromCompleted(videoId) {
+  const videoTarget = findVideos(videoId);
+
+  if (videoTarget == null) return;
+
+  videoTarget.isComplete = false;
+  document.dispatchEvent(new Event(RENDER_VIDEOS));
+}
+
+function addVideoToComplete (videoId) {
+  const videoTarget = findBooks(videoId);
+
+  if (videoTarget == null) return;
+
+  videoTarget.isComplete = true;
+  document.dispatchEvent(new Event(RENDER_VIDEOS));
 }
 
 /* contoh
@@ -121,10 +152,10 @@ isComplete: true,
 // Fungsi Delete videoItem from videoList dengan id
 // memfilter id object yang ingin dihilangkan
 //
-function removeVideoItemWithId(videoList, id) {
-  return videoList.filter((obj) => obj.id !== id);
-}
+// function removeVideoItemWithId(videoList, id) {
+//   return videoList.filter((obj) => obj.id !== id);
+// }
 
-export { videoList, RENDER_VIDEOS, takeInputVideo, changeIsComplete, removeVideoItemWithId };
+export { videoList, RENDER_VIDEOS, takeInputVideo, removeVideoFromCompleted, undoBooksFromCompleted, addVideoToComplete };
 // export default takeInputVideo();
 // expor
