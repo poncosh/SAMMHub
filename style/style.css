@@ -29,8 +29,20 @@ body > #embedded-video {
     color:white;
 }
 
-#embedded-video > #play-thumbnail {
+#embedded-video > .person {
     align-items: baseline;
+    background-color: #0c0c0c;
+    border-radius: 10px;
+    padding: 20px;
+    color: #ffffff;
+    top: 0;
+    right: 0;
+    position: fixed;
+    font-size: 0.9rem;
+}
+
+#embedded-video > #play-thumbnail {
+    align-items: center;
     color: #ffffff;
     margin-top: 20%;
     position: fixed;

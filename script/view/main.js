@@ -23,7 +23,9 @@ function makeVideo(videoObject) {
 
         embedVid.innerHTML = `
             <iframe id="video-playing" src="${videoObject.link}" width="80%" height="100%" allow="autoplay" allowfullscreen>
-            </iframe>`
+            </iframe>`;
+
+        addVideoToComplete(videoObject.id);
     })
 
 
@@ -92,8 +94,14 @@ function makeVideo(videoObject) {
 
 
 // event saat tombol submit di click
-
 document.addEventListener('DOMContentLoaded', function () {
+    let person = prompt("Please enter your name", "Your Name");
+    const videoCont = document.getElementById('embedded-video');
+
+    const nameElement = document.createElement('div');
+    nameElement.classList.add('person');
+    nameElement.innerHTML = `Hello, ${person}`
+    videoCont.appendChild(nameElement);
 
     const uncompleteVideoList = document.getElementById('unwatchedList');
     const completeVideoList = document.getElementById('watchedList');
